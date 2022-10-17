@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitOps Demo</title>
+</head>
+<body>
+    <!-- Centered text in the middle of the page full height-->
+    <div style="display: flex; justify-content: center; align-items: center; height: 95vh;">
+        <!-- new row in flex-->
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h1>GitOps Demo</h1>
+            <h3>Backend says:</h3>
+            <p id="backend"></p>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    async function checkBackend() {
+        let backendUp = fetch('https://hello-world-backend.denctl.com')
+            .then(response => response.json())
+            .then(response => document.getElementById('backend').innerText = response[0].title)
+            .then(response => console.log(response))
+
+        return backendUp
+    }
+
+    // if the function checkBackend successfully returns, the backend is up
+    checkBackend()
+        .then(response => console.log('Backend is up'))
+        .catch(error => console.log('Backend is down'))
+</script>
+</html>
