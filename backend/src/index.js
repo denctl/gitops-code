@@ -12,7 +12,7 @@ const app = express();
 
 // defining an array to work as the database (temporary solution)
 const ads = [
-  { title: 'Hello, frontend. I am the backend!' }
+  { title: 'Hello, frontend. I am the backend! Oh, and I am the DEMO backend!' }
 ];
 
 // adding Helmet to enhance your API's security
